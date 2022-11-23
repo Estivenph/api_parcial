@@ -24,6 +24,13 @@ app.get('/', async (req, res) => {
     const [rows] = await pool.query('insert into clientes ("documento", "nombre" ,"apellidos" , "direccion") select data.documento data.nombre data.apellidos data.direccion')
 	res.json(rows[0][0])
   })
+
+  app.get('/Productos', async (req, res) => {
+    const id = req.params
+    const [rows] = await pool.query('SELECT * FROM producto')
+    res.json(rows);
+    
+  })
  
   app.post('/producto', async (req, res) => {
     const data = req.body
