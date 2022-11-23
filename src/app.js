@@ -23,7 +23,8 @@ app.get('/', async (req, res) => {
     const dat = req.body
     const data = Object.values(dat)
     console.log(data);
-    const [rows] = await pool.query('insert into cliente (documento, nombre ,apellidos ,direccion) values ('+ data.documento, data.nombre, data.apellidos, data.direccion + ')')
+    const [rows] = await pool.query('insert into cliente (documento, nombre ,apellidos ,direccion) values 
+				    ('"+ data.documento+ " ','" +  data.nombre +"','"+ data.apellidos+" ','"+ data.direccion +" ')')
 	res.json(rows[0][0])
   })
 
