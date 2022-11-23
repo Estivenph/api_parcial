@@ -19,9 +19,9 @@ app.get('/', async (req, res) => {
     res.json(rows)
   })
   
-  app.post('/cliente', async (req, res) => {
+  app.post('/clientes', async (req, res) => {
     const data = req.body
-    const [rows] = await pool.query('insert into clientes ("documento", "nombre" ,"apellidos" , "direccion") select data.documento data.nombre data.apellidos data.direccion')
+    const [rows] = await pool.query('insert into cliente (documento, nombre ,apellidos ,direccion) select data.documento data.nombre data.apellidos data.direccion')
 	res.json(rows[0][0])
   })
 
@@ -34,7 +34,7 @@ app.get('/', async (req, res) => {
  
   app.post('/producto', async (req, res) => {
     const data = req.body
-    const [rows] = await pool.query('insert into producto("nombre" ,"descripcion" , "precio") select  data.nombre data.descripcion data.precio')
+    const [rows] = await pool.query('insert into producto(nombre,descripcion , precio) select  data.nombre data.descripcion data.precio')
     res.json(rows[0][0])
   })
   
