@@ -39,7 +39,7 @@ app.get('/', async (req, res) => {
   })
   
   app.get('/orden_detalle/:IdOrden', async (req, res) => {
-    const id = req.params
+    const doc_cl = req.params
     const [rows] = await pool.query('SELECT * FROM orden_detalle')
     res.json(rows);
    })
