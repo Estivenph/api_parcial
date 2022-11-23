@@ -40,7 +40,7 @@ app.get('/', async (req, res) => {
   
   app.get('/orden_detalle/:IdOrden', async (req, res) => {
     const doc_cl = req.params
-    const [rows] = await pool.query('SELECT * FROM orden_detalle')
+    const [rows] = await pool.query('SELECT date_format(fecha, "%d-%m-%Y") as fecha, iva, sub_total, cant, valor_total, nombre_prod, apellido_cli, nombre_cli, id_orden  FROM orden_detalle')
     res.json(rows);
    })
   app.post('/orden_detalle', async (req, res) => {
