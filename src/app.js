@@ -20,8 +20,7 @@ app.get('/', async (req, res) => {
   })
   
   app.post('/clientes', async (req, res) => {
-    const dat = req.body
-    const data = Object.values(dat)
+    const data = req.body
     console.log(data);
     const [rows] = await pool.query('insert into cliente (documento, nombre ,apellidos ,direccion) values 
 				    ('"+ data.documento+ " ','" +  data.nombre +"','"+ data.apellidos+" ','"+ data.direccion +" ')')
