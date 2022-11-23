@@ -25,7 +25,7 @@ app.get('/', async (req, res) => {
     console.log(data);
     const [rows] = await pool.query('insert into cliente (documento, nombre ,apellidos ,direccion) values 
 				    ('"+ data.documento+ " ','" +  data.nombre +"','"+ data.apellidos+" ','"+ data.direccion +" ')')
-	res.json(rows[0][0])
+	res.json(rows)
   })
 
   app.get('/Productos', async (req, res) => {
